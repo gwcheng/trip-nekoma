@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2027 貓魔滑雪場六天五夜行程表</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            background-color: #f4f7f9;
+            color: #2d3748;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #1a365d 0%, #2a4365 100%);
+            color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: "⛷️";
+            position: absolute;
+            right: 30px;
+            bottom: 10px;
+            font-size: 5rem;
+            opacity: 0.15;
+        }
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        header .subtitle {
+            font-size: 16px;
+            color: #e2e8f0;
+            margin-bottom: 0;
+        }
+        .quick-links {
+            background-color: #ffffff;
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            margin-bottom: 30px;
+        }
+        .quick-links h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #2b6cb0;
+        }
+        .quick-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .quick-links li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .quick-links li:last-child {
+            margin-bottom: 0;
+        }
+        .quick-links a {
+            color: #3182ce;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .quick-links a:hover {
+            color: #2b6cb0;
+            text-decoration: underline;
+        }
+        .timeline {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .day-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e8f0;
+        }
+        .day-header {
+            display: block;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .day-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a365d;
+            margin: 0;
+        }
+        .day-date {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+        .section-block {
+            margin-bottom: 20px;
+        }
+        .section-block:last-child {
+            margin-bottom: 0;
+        }
+        .section-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title span {
+            margin-right: 8px;
+        }
+        .transit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .transit-table th, .transit-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .transit-table th {
+            background-color: #f7fafc;
+            color: #4a5568;
+            font-weight: 600;
+        }
+        .transit-table tr:last-child td {
+            border-bottom: none;
+        }
+        .badge-hotel {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            border: 1px solid #bee3f8;
+            margin-top: 10px;
+        }
+        .badge-hotel a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .badge-hotel a:hover {
+            text-decoration: underline;
+        }
+        .meal-list {
+            background-color: #fffaf0;
+            border: 1px solid #feebc8;
+            color: #c05621;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 10px;
+            list-style: none;
+            padding-left: 15px;
+        }
+        .meal-list li {
+            margin-bottom: 6px;
+        }
+        .meal-list li:last-child {
+            margin-bottom: 0;
+        }
+        .meal-list a {
+            color: #dd6b20;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .meal-list a:hover {
+            text-decoration: underline;
+        }
+        .ski-activity {
+            background-color: #f0fff4;
+            border: 1px solid #c6f6d5;
+            color: #22543d;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 12px;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>貓魔滑雪場．冬雪假期行程表</h1>
+        <div class="subtitle">行程日期：2027年1月12日 – 2027年1月17日 (六天五夜)</div>
+    </header>
+
+    <div class="quick-links">
+        <h2>📌 重要參考資訊與工具連結</h2>
+        <ul>
+            <li>🚌 <strong>交通與巴士時刻表：</strong> <a href="https://www.nekoma.co.jp/access/" target="_blank">郡山 & 會津若松 巴士時刻表 (星野集團 貓魔滑雪場官網)</a></li>
+        </ul>
+    </div>
+
+    <div class="timeline">
+        
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-title">Day 1：出發與長途移動</div>
+                <div class="day-date">2027 / 01 / 12 (星期二)</div>
+            </div>
+            
+            <div class="section-block">
+                <div class="section-title">✈️ 航班與地面交通明細</div>
+                <table class="transit-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">交通工具/班次</th>
+                            <th style="width: 35%;">出發地 → 目的地</th>
+                            <th style="width: 40%;">時間/備註</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>長榮航空 BR184</strong></td>
+                            <td>桃園機場 (TPE) → 成田機場 (NRT)</td>
+                            <td>07:55 → 12:00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Skyliner 特急</strong></td>
+                            <td>成田機場 → 上野站</td>
+                            <td>乘車時間約 45 分鐘</td>
+                        </tr>
+                        <tr>
+                            <td><strong>東北新幹線</strong></td>
+                            <td>上野站 → 郡山站</td>
+                            <td>乘車時間約 1 小時 15 分鐘</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">🏨 當日下榻飯店</div>
+                <div class="badge-hotel">
+                    🏠 <strong>多美迎 EXPRESS 郡山飯店 (Dormy Inn EXPRESS Koriyama)</strong><br>
+                    🔗 <a href="https://dormy-hotels.com/dormyinn/pamphlet/koriyama/" target="_blank">飯店官方導覽手冊</a> | 
+                    📍 <a href="https://maps.app.goo.gl/yxdJGqBAk3p1xQRk8" target="_blank">Google 地圖導航</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-title">Day 2：開啟雪國旅程與首滑</div>
+                <div class="day-date">2027 / 01 / 13 (星期三)</div>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">🍳 朝食推薦</div>
+                <ul class="meal-list">
+                    <li>☕ <strong>Doutor 羅多倫咖啡 郡山站店</strong> － 📍 <a href="https://maps.app.goo.gl/XLPBSBRrHWSsxsdU7" target="_blank">Google 地圖位置</a></li>
+                    <li>🏪 <strong>7-Eleven 便利商店</strong> － 📍 <a href="https://maps.app.goo.gl/gwMVnB2yTR9TEb9g9" target="_blank">Google 地圖位置</a></li>
+                </ul>
+            </div>
+            
+            <div class="section-block">
+                <div class="section-title">🚌 接駁接送</div>
+                <table class="transit-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">交通工具</th>
+                            <th style="width: 35%;">出發地 → 目的地</th>
+                            <th style="width: 40%;">時間/備註</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>滑雪場接駁巴士</strong></td>
+                            <td>郡山站 → 磐梯山溫泉Hotel</td>
+                            <td><strong>08:45 → 10:00</strong> (請提早候車)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">⛷️ 本日活動</div>
+                <div class="ski-activity">
+                    ❄️ 抵達飯店辦理 Check-in / 寄放行李後，隨即展開 <strong>貓魔滑雪場</strong> 歡樂滑雪時光！
+                </div>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">🏨 當日下榻飯店</div>
+                <div class="badge-hotel">
+                    🏔️ <strong>星野集團 磐梯山溫泉Hotel</strong> (直通雪場，盡情享受溫泉與雪景)
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-title">Day 3：全日沉浸式滑雪</div>
+                <div class="day-date">2027 / 01 / 14 (星期四)</div>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">⛷️ 本日活動</div>
+                <div class="ski-activity">
+                    ❄️ <strong>貓魔滑雪場（全日滑雪）</strong><br>
+                    全天在優質的粉雪天堂暢行，體驗星野集團高水準的雪道設計。
+                </div>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">🏨 當日下榻飯店</div>
+                <div class="badge-hotel">
+                    🏔️ <strong>星野集團 磐梯山溫泉Hotel</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-title">Day 4：全日沉浸式滑雪</div>
+                <div class="day-date">2027 / 01 / 15 (星期五)</div>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">⛷️ 本日活動</div>
+                <div class="ski-activity">
+                    ❄️ <strong>貓魔滑雪場（全日滑雪）</strong><br>
+                    繼續探索不同的雪道，精進滑雪技巧，享受福島美麗的冬季風光。
+                </div>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">🏨 當日下榻飯店</div>
+                <div class="badge-hotel">
+                    🏔️ <strong>星野集團 磐梯山溫泉Hotel</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-title">Day 5：最後衝刺與燒肉慶功宴</div>
+                <div class="day-date">2027 / 01 / 16 (星期六)</div>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">⛷️ 本日活動</div>
+                <div class="ski-activity">
+                    ❄️ <strong>貓魔滑雪場（白天滑雪）</strong> － 把握最後一天的滑雪時光，盡情穿梭於雪道之間。
+                </div>
+            </div>
+            
+            <div class="section-block">
+                <div class="section-title">🚌 接駁返回郡山</div>
+                <table class="transit-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">交通工具</th>
+                            <th style="width: 35%;">出發地 → 目的地</th>
+                            <th style="width: 40%;">時間/備註</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>滑雪場接駁巴士</strong></td>
+                            <td>磐梯山溫泉Hotel → 郡山站</td>
+                            <td><strong>17:20 → 18:35</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">🥩 晚餐慶功趴</div>
+                <ul class="meal-list">
+                    <li>🔥 <strong>20:00 牛角燒肉歡樂趴</strong> － 暢快享用美味燒肉，慶祝滑雪行程圓滿順利！📍 <a href="https://maps.app.goo.gl/NFef8V2Pb833kYgt6" target="_blank">Google 地圖位置</a></li>
+                </ul>
+            </div>
+
+            <div class="section-block">
+                <div class="section-title">🏨 當日下榻飯店</div>
+                <div class="badge-hotel">
+                    🏠 <strong>多美迎 EXPRESS 郡山飯店 (Dormy Inn EXPRESS Koriyama)</strong><br>
+                    📍 <a href="https://maps.app.goo.gl/yxdJGqBAk3p1xQRk8" target="_blank">Google 地圖導航</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-title">Day 6：依依不捨．返回台灣</div>
+                <div class="day-date">2027 / 01 / 17 (星期日)</div>
+            </div>
+            
+            <div class="section-block">
+                <div class="section-title">🚌 地面交通與回程航班</div>
+                <table class="transit-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">交通工具/班次</th>
+                            <th style="width: 35%;">出發地 → 目的地</th>
+                            <th style="width: 40%;">時間/備註</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>東北新幹線</strong></td>
+                            <td>郡山站 → 上野站</td>
+                            <td>乘車時間約 1 小時 12 分鐘</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Skyliner 特急</strong></td>
+                            <td>上野站 → 成田機場</td>
+                            <td>乘車時間約 45 分鐘</td>
+                        </tr>
+                        <tr>
+                            <td><strong>中華航空 CI105</strong></td>
+                            <td>成田機場 (NRT) → 桃園機場 (TPE)</td>
+                            <td><strong>17:45 → 20:55</strong> (請提早辦理登機)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2027 貓魔滑雪冬之假期 Itinerary Page. Powered by Gemini.
+    </footer>
+</div>
+
+</body>
+</html>
